@@ -1,0 +1,19 @@
+VAR vsemanaanterior =
+SUMX(
+    VALUES(d_calendar[Semana do Mês]),
+CALCULATE(
+    [U$ Value],
+    FILTER(
+        ALL(d_calendar[Semana do Mês]),
+        d_calendar[Semana do Mês] = MAX(d_calendar[Semana do Mês]) -1)
+)
+)
+VAR vsemanaatual = [U$ Value]
+VAR resultado = 
+DIVIDE(
+    vsemanaatual,
+    vsemanaanterior
+)
+-1
+return
+resultado
